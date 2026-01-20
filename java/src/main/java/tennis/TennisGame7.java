@@ -1,3 +1,5 @@
+package tennis;
+
 public class TennisGame7 implements TennisGame {
     private final String player1Name;
     private final String player2Name;
@@ -37,7 +39,7 @@ public class TennisGame7 implements TennisGame {
                     result += "Thirty-All";
                     break;
                 default:
-                    result += "Deuce";
+                    result += "tennis.Deuce";
                     break;
             }
         }

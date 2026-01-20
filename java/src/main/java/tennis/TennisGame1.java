@@ -1,3 +1,4 @@
+package tennis;
 
 public class TennisGame1 implements TennisGame {
     
@@ -35,7 +36,7 @@ public class TennisGame1 implements TennisGame {
                         score = "Thirty-All";
                     break;
                 default:
-                        score = "Deuce";
+                        score = "tennis.Deuce";
                     break;
                 
             }
