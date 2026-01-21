@@ -30,14 +30,14 @@ public class TennisGame1 implements TennisGame {
         int scoreOne = player1.getPoints();
         int scoreTwo = player2.getPoints();
         String score = "";
-        int tempScore=0;
+        int tempScore;
         if (scoreOne == scoreTwo)
         {
             score = getScoreWhenEqual(scoreOne);
         }
         else if (scoreOne >=4 || scoreTwo >=4)
         {
-            score = getScoreWhenGreaterThanFour(player1,player2, scoreOne - scoreTwo);
+            score = getAdvantageOrWin(player1, player2, scoreOne - scoreTwo);
         }
         else
         {
@@ -68,7 +68,7 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private static String getScoreWhenGreaterThanFour(Player player1, Player player2, int differenceBetweenScore) {
+    private static String getAdvantageOrWin(Player player1, Player player2, int differenceBetweenScore) {
         return switch (differenceBetweenScore) {
             case 1 -> "Advantage " + player1.getName();
             case -1 -> "Advantage " + player2.getName();
