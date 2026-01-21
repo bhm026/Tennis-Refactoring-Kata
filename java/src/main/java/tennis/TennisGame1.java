@@ -24,30 +24,17 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
+        int scoreOne = player1.getPoints();
+        int scoreTwo = player2.getPoints();
         String score = "";
         int tempScore=0;
-        if (playerOneScore == playerTwoScore)
+        if (scoreOne == scoreTwo)
         {
-            switch (playerOneScore)
-            {
-                case 0:
-                        score = "Love-All";
-                    break;
-                case 1:
-                        score = "Fifteen-All";
-                    break;
-                case 2:
-                        score = "Thirty-All";
-                    break;
-                default:
-                        score = "tennis.Deuce";
-                    break;
-
-            }
+            score = getScoreWhenEqual(scoreOne);
         }
-        else if (playerOneScore >=4 || playerTwoScore >=4)
+        else if (scoreOne >=4 || scoreTwo >=4)
         {
-            int minusResult = playerOneScore - playerTwoScore;
+            int minusResult = scoreOne - scoreTwo;
             if (minusResult==1) score ="Advantage player1";
             else if (minusResult ==-1) score ="Advantage player2";
             else if (minusResult>=2) score = "Win for player1";
@@ -58,10 +45,10 @@ public class TennisGame1 implements TennisGame {
             for (int i=1; i<3; i++)
             {
                 if (i==1) {
-                    tempScore = playerOneScore;
+                    tempScore = scoreOne;
                 } else {
                     score+="-";
-                    tempScore = playerTwoScore;}
+                    tempScore = scoreTwo;}
                 switch(tempScore)
                 {
                     case 0:
@@ -80,5 +67,14 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private static String getScoreWhenEqual(int scoreOne) {
+        return switch (scoreOne) {
+            case 0 -> "Love-All";
+            case 1 -> "Fifteen-All";
+            case 2 -> "Thirty-All";
+            default -> "tennis.Deuce";
+        };
     }
 }
