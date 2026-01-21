@@ -2,14 +2,18 @@ package tennis.model;
 
 public class Player {
     private String name;
-    private int score;
+    private int points;
 
-    public int getScore() {
-        return score;
+    public Player(String name){
+        this.name = name;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String getName() {

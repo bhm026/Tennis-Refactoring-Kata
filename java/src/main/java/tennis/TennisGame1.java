@@ -1,17 +1,19 @@
 package tennis;
 
+import tennis.model.Player;
+
 import java.util.Objects;
 
 public class TennisGame1 implements TennisGame {
     
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
-    private String player1Name;
-    private String player2Name;
+    private final Player player1;
+    private final Player player2;
 
     public TennisGame1(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+       this.player1= new Player(player1Name);
+       this.player2= new Player(player2Name);
     }
 
     public void wonPoint(String playerName) {
@@ -40,7 +42,7 @@ public class TennisGame1 implements TennisGame {
                 default:
                         score = "tennis.Deuce";
                     break;
-                
+
             }
         }
         else if (playerOneScore >=4 || playerTwoScore >=4)
@@ -55,8 +57,11 @@ public class TennisGame1 implements TennisGame {
         {
             for (int i=1; i<3; i++)
             {
-                if (i==1) tempScore = playerOneScore;
-                else { score+="-"; tempScore = playerTwoScore;}
+                if (i==1) {
+                    tempScore = playerOneScore;
+                } else {
+                    score+="-";
+                    tempScore = playerTwoScore;}
                 switch(tempScore)
                 {
                     case 0:
