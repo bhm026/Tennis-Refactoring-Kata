@@ -37,8 +37,7 @@ public class TennisGame1 implements TennisGame {
         }
         else if (scoreOne >=4 || scoreTwo >=4)
         {
-            int differenceBetweenScore = scoreOne - scoreTwo;
-            score = getScoreWhenGreaterThanFour(player1,player2,differenceBetweenScore);
+            score = getScoreWhenGreaterThanFour(player1,player2, scoreOne - scoreTwo);
         }
         else
         {
@@ -70,17 +69,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     private static String getScoreWhenGreaterThanFour(Player player1, Player player2, int differenceBetweenScore) {
-        String score;
-        if (differenceBetweenScore ==1) {
-            score ="Advantage "+ player1.getName();
-        } else if (differenceBetweenScore ==-1) {
-            score ="Advantage "+ player2.getName();
-        } else if (differenceBetweenScore >=2) {
-            score = "Win for "+ player1.getName();
-        } else {
-            score ="Win for "+ player2.getName();
-        }
-        return score;
+        return switch (differenceBetweenScore) {
+            case 1 -> "Advantage " + player1.getName();
+            case -1 -> "Advantage " + player2.getName();
+            default -> differenceBetweenScore >= 2 ? "Win for " + player1.getName() : "Win for " + player2.getName();
+        };
     }
 
     private static String getScoreWhenEqual(int scoreOne) {
