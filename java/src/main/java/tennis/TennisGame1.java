@@ -17,10 +17,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (Objects.equals(playerName, "player1"))
+        if (Objects.equals(playerName, "player1")) {
             playerOneScore += 1;
-        else
+            player1.setPoints(playerOneScore);
+        } else {
             playerTwoScore += 1;
+            player2.setPoints(playerTwoScore);
+        }
     }
 
     public String getScore() {
@@ -35,7 +38,7 @@ public class TennisGame1 implements TennisGame {
         else if (scoreOne >=4 || scoreTwo >=4)
         {
             int differenceBetweenScore = scoreOne - scoreTwo;
-            score = getScoreWhenGreaterThanFour(differenceBetweenScore);
+            score = getScoreWhenGreaterThanFour(player1,player2,differenceBetweenScore);
         }
         else
         {
@@ -66,16 +69,16 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private static String getScoreWhenGreaterThanFour(int differenceBetweenScore) {
+    private static String getScoreWhenGreaterThanFour(Player player1, Player player2, int differenceBetweenScore) {
         String score;
         if (differenceBetweenScore ==1) {
-            score ="Advantage player1";
+            score ="Advantage "+ player1.getName();
         } else if (differenceBetweenScore ==-1) {
-            score ="Advantage player2";
+            score ="Advantage "+ player2.getName();
         } else if (differenceBetweenScore >=2) {
-            score = "Win for player1";
+            score = "Win for "+ player1.getName();
         } else {
-            score ="Win for player2";
+            score ="Win for "+ player2.getName();
         }
         return score;
     }
