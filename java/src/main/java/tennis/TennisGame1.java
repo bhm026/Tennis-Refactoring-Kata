@@ -29,40 +29,41 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         int scoreOne = player1.getPoints();
         int scoreTwo = player2.getPoints();
-        String score = "";
-        int tempScore;
         if (scoreOne == scoreTwo)
         {
-            score = getScoreWhenEqual(scoreOne);
+            return getScoreWhenEqual(scoreOne);
         }
         else if (scoreOne >=4 || scoreTwo >=4)
         {
-            score = getAdvantageOrWin(player1, player2, scoreOne - scoreTwo);
+            return getAdvantageOrWin(player1, player2, scoreOne - scoreTwo);
         }
-        else
+        return getResultWhenScoreIsLessThanThree(scoreOne, scoreTwo);
+    }
+
+    private static String getResultWhenScoreIsLessThanThree(int scoreOne, int scoreTwo) {
+        String score = "";
+        int tempScore;
+        for (int i = 1; i<3; i++)
         {
-            for (int i=1; i<3; i++)
+            if (i==1) {
+                tempScore = scoreOne;
+            } else {
+                score +="-";
+                tempScore = scoreTwo;}
+            switch(tempScore)
             {
-                if (i==1) {
-                    tempScore = scoreOne;
-                } else {
-                    score+="-";
-                    tempScore = scoreTwo;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
+                case 0:
+                    score +="Love";
+                    break;
+                case 1:
+                    score +="Fifteen";
+                    break;
+                case 2:
+                    score +="Thirty";
+                    break;
+                case 3:
+                    score +="Forty";
+                    break;
             }
         }
         return score;
