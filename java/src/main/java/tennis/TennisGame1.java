@@ -4,7 +4,7 @@ import tennis.model.Player;
 
 import java.util.HashMap;
 
-public class TennisGame1 implements TennisGame {
+public class TennisGame1 implements TennisGame, ScoreStrategy {
 
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
@@ -25,6 +25,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
+        return getScoreBasedOnStrategy(player1, player2);
+    }
+
+    @Override
+    public String getScoreBasedOnStrategy(Player player1, Player player2) {
         int scoreOne = player1.getPoints();
         int scoreTwo = player2.getPoints();
         if (scoreOne == scoreTwo) {
