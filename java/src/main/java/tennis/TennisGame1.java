@@ -2,7 +2,7 @@ package tennis;
 
 import tennis.model.Player;
 
-import java.util.Objects;
+import java.util.HashMap;
 
 public class TennisGame1 implements TennisGame {
 
@@ -36,31 +36,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     private static String getResultWhenScoreIsLessThanThree(int scoreOne, int scoreTwo) {
-        String score = "";
-        int tempScore;
-        for (int i = 1; i < 3; i++) {
-            if (i == 1) {
-                tempScore = scoreOne;
-            } else {
-                score += "-";
-                tempScore = scoreTwo;
-            }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
-        }
-        return score;
+        HashMap<Integer, String> scoreMap = new HashMap<>();
+        scoreMap.put(0, "Love");
+        scoreMap.put(1, "Fifteen");
+        scoreMap.put(2, "Thirty");
+        scoreMap.put(3, "Forty");
+        return scoreMap.get(scoreOne) + "-" + scoreMap.get(scoreTwo);
+
     }
 
     private static String getAdvantageOrWin(Player player1, Player player2, int differenceBetweenScore) {
