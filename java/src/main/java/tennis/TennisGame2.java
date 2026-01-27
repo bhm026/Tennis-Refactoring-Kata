@@ -105,20 +105,10 @@ public class TennisGame2 implements TennisGame
         return score;
     }
 
-    public void P1Score(){
-        P1point++;
-        player1.setPoints(P1point);
-    }
-    
-    public void P2Score(){
-        P2point++;
-        player2.setPoints(P2point);
-    }
-
     public void wonPoint(String player) {
-        if (player == "player1")
-            P1Score();
+        if (player1.getName().equals(player))
+            player1.setPoints(++P1point);
         else
-            P2Score();
+            player2.setPoints(++P2point);
     }
 }
