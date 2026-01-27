@@ -1,7 +1,7 @@
 package tennis.model;
 
 public class Player {
-    private String name;
+    private final String name;
     private int points;
 
     public Player(String name){
@@ -20,7 +20,4 @@ public class Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

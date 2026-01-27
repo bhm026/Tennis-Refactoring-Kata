@@ -6,13 +6,18 @@ import java.util.HashMap;
 
 public class ScoreStrategyImplementation implements ScoreStrategy {
     private String getResultWhenScoreIsLessThanThree(int scoreOne, int scoreTwo) {
+        HashMap<Integer, String> scoreMap = getScoreMap();
+        return scoreMap.get(scoreOne) + "-" + scoreMap.get(scoreTwo);
+
+    }
+
+    private static HashMap<Integer, String> getScoreMap() {
         HashMap<Integer, String> scoreMap = new HashMap<>();
         scoreMap.put(0, "Love");
         scoreMap.put(1, "Fifteen");
         scoreMap.put(2, "Thirty");
         scoreMap.put(3, "Forty");
-        return scoreMap.get(scoreOne) + "-" + scoreMap.get(scoreTwo);
-
+        return scoreMap;
     }
 
     private String getAdvantageOrWin(Player player1, Player player2, int differenceBetweenScore) {
