@@ -23,11 +23,11 @@ public class TennisGame2 implements TennisGame
         String score = "";
         if (P1point == P2point && P1point < 4)
         {
-            score = getScoreWhenBothHaveSamePointsAndLessThanMax(P1point, score);
+            score = getScoreWhenBothHaveSamePointsAndLessThanMax(P1point);
         }
-        if (P1point==P2point && P1point>=3)
-            score = "tennis.Deuce";
-        
+        if (P1point==P2point && P1point>=3) {
+            return "tennis.Deuce";
+        }
         if (P1point > 0 && P2point==0)
         {
             if (P1point==1)
@@ -99,15 +99,13 @@ public class TennisGame2 implements TennisGame
         return score;
     }
 
-    private static String getScoreWhenBothHaveSamePointsAndLessThanMax(int P1point, String score) {
-        if (P1point ==0)
-            score = "Love";
-        if (P1point ==1)
-            score = "Fifteen";
-        if (P1point ==2)
-            score = "Thirty";
-        score += "-All";
-        return score;
+    private static String getScoreWhenBothHaveSamePointsAndLessThanMax(int P1point) {
+        return switch (P1point) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            default -> "";
+        } + "-All";
     }
 
     public void wonPoint(String player) {
