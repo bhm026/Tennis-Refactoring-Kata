@@ -4,8 +4,6 @@ import tennis.model.Player;
 
 public class TennisGame2 implements TennisGame
 {
-    public int P1point = 0;
-    public int P2point = 0;
 
     public String P1res = "";
     public String P2res = "";
@@ -115,8 +113,8 @@ public class TennisGame2 implements TennisGame
 
     public void wonPoint(String player) {
         if (player1.getName().equals(player))
-            player1.setPoints(++P1point);
+            player1.setPoints(player1.getPoints() + 1);
         else
-            player2.setPoints(++P2point);
+            player2.setPoints(player2.getPoints() + 1);
     }
 }

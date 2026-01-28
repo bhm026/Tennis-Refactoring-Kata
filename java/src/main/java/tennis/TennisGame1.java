@@ -30,6 +30,4 @@ public class TennisGame1 implements TennisGame {
         return scoreStrategy.getScoreBasedOnStrategy(player1, player2);
     }
 
-
-
 }
