@@ -28,23 +28,9 @@ public class TennisGame2 implements TennisGame
         if (P1point==P2point && P1point>=3) {
             return "tennis.Deuce";
         }
-        score = getScoreWhenScoresAreGreaterThanZeroAndScoresAreEqualToZero(P1point, P2point, score);
-
-        if (P1point>P2point && P1point < 4)
+        if (P1point!=P2point && P1point < 4 && P2point < 4)
         {
             score = getScoreWhenPointsAreNotEqualAndLessThanFour(P1point, P2point);
-        }
-        if (P2point>P1point && P2point < 4)
-        {
-            if (P2point==2)
-                P2res="Thirty";
-            if (P2point==3)
-                P2res="Forty";
-            if (P1point==1)
-                P1res="Fifteen";
-            if (P1point==2)
-                P1res="Thirty";
-            score = P1res + "-" + P2res;
         }
 
         if (P1point > P2point && P2point >= 3)
@@ -79,34 +65,6 @@ public class TennisGame2 implements TennisGame
         scoreMap.put(2, "Thirty");
         scoreMap.put(3, "Forty");
         return scoreMap.get(points);
-    }
-
-    private String getScoreWhenScoresAreGreaterThanZeroAndScoresAreEqualToZero(int P1point, int P2point, String score) {
-        if (P1point > 0 && P2point ==0)
-        {
-            if (P1point ==1)
-                P1res = "Fifteen";
-            if (P1point ==2)
-                P1res = "Thirty";
-            if (P1point ==3)
-                P1res = "Forty";
-
-            P2res = "Love";
-            score = P1res + "-" + P2res;
-        }
-        if (P2point > 0 && P1point ==0)
-        {
-            if (P2point ==1)
-                P2res = "Fifteen";
-            if (P2point ==2)
-                P2res = "Thirty";
-            if (P2point ==3)
-                P2res = "Forty";
-
-            P1res = "Love";
-            score = P1res + "-" + P2res;
-        }
-        return score;
     }
 
     private static String getScoreWhenBothHaveSamePointsAndLessThanMax(int P1point) {
