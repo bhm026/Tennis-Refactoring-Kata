@@ -4,8 +4,6 @@ import tennis.model.Player;
 
 public class TennisGame1 implements TennisGame {
 
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
     private final Player player1;
     private final Player player2;
     private final ScoreStrategy scoreStrategy;
@@ -22,9 +20,9 @@ public class TennisGame1 implements TennisGame {
 
     public void wonPoint(String playerName) {
         if (player1.getName().equals(playerName)) {
-            player1.setPoints(++playerOneScore);
+            player1.setPoints(player1.getPoints() + 1);
         } else {
-            player2.setPoints(++playerTwoScore);
+            player2.setPoints(player2.getPoints() + 1);
         }
     }
 
