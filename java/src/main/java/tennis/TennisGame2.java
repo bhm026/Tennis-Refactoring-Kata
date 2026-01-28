@@ -2,6 +2,8 @@ package tennis;
 
 import tennis.model.Player;
 
+import java.util.HashMap;
+
 public class TennisGame2 implements TennisGame
 {
 
@@ -30,15 +32,7 @@ public class TennisGame2 implements TennisGame
 
         if (P1point>P2point && P1point < 4)
         {
-            if (P1point==2)
-                P1res="Thirty";
-            if (P1point==3)
-                P1res="Forty";
-            if (P2point==1)
-                P2res="Fifteen";
-            if (P2point==2)
-                P2res="Thirty";
-            score = P1res + "-" + P2res;
+            score = getScoreWhenPointsAreNotEqualAndLessThanFour(P1point, P2point);
         }
         if (P2point>P1point && P2point < 4)
         {
@@ -72,6 +66,19 @@ public class TennisGame2 implements TennisGame
             score = "Win for player2";
         }
         return score;
+    }
+
+    private String getScoreWhenPointsAreNotEqualAndLessThanFour(int P1point, int P2point) {
+        return getScoresForPlayers(P1point) + "-" + getScoresForPlayers(P2point);
+    }
+
+    private static String getScoresForPlayers(int points) {
+        HashMap<Integer, String> scoreMap = new HashMap<>();
+        scoreMap.put(0, "Love");
+        scoreMap.put(1, "Fifteen");
+        scoreMap.put(2, "Thirty");
+        scoreMap.put(3, "Forty");
+        return scoreMap.get(points);
     }
 
     private String getScoreWhenScoresAreGreaterThanZeroAndScoresAreEqualToZero(int P1point, int P2point, String score) {
